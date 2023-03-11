@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# xinitrc runs automatically when you run startx.
+
+# There are some small but important commands that need to be run when we start
+# the graphical environment. There is a link to this file in ~/.xprofile
+# because that file is run automatically if someone uses a display manager
+# (login screen) and so they are needed there. To prevent doubling up commands,
+# I source them here with the line below.
+#xrandr --setprovideroutputsource modesetting NVIDIA-0
+#xrandr --auto
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --output HDMI-1-2 --auto --scale 1.0x1.0 --output eDP-1-1 --off --dpi 96
+
+
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
+else
+	. "$HOME/.xprofile"
+fi
+
+#exec strace --output=dwm.log --absolute-timestamps dwm
+dwm
