@@ -1,0 +1,3 @@
+#!/bin/sh
+
+yt-dlp -N 10 --add-metadata -i "$1"

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+filename="$1"
+
+soffice --headless --convert-to pdf $filename 

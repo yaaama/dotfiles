@@ -1,0 +1,5 @@
+#!/bin/sh
+
+#This script will print out the name of the current bluetooth device.
+
+bluetoothctl info | grep "Name" | sed 's/Name://g'
